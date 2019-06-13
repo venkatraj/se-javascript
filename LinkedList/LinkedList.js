@@ -19,16 +19,12 @@ class LinkedList {
     if (index < 0) return null;
 
     let currentNode = this.head
-    for (let i = 1; i <= this.length; i++) {
+    for (let i = 0; i <= this.length; i++) {
       if (i === index) {
         return currentNode
       }
       currentNode = currentNode.next
     }
-  }
-
-  insert(index, value) {
-    const node = new Node(value)
   }
 
   push_front(value) {
@@ -45,7 +41,21 @@ class LinkedList {
     return poppedNode.value
   }
 
-  push_back(value) {}
+  push_back(value) {
+    if (this.empty()) {
+      this.head = new Node(value)
+      return
+    }
+    let currentNode = this.head
+    while (currentNode.next !== null) {
+      currentNode = currentNode.next
+    }
+    currentNode.next = new Node(value)
+  }
+
+  insert(index, value) {
+    const node = new Node(value)
+  }
 
   toString() {
     if (this.length === 0) return 'Empty LinkedList'
