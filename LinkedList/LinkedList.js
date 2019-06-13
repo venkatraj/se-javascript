@@ -53,8 +53,70 @@ class LinkedList {
     currentNode.next = new Node(value)
   }
 
+  pop_back() {
+    if (this.empty()) return null
+
+    let currentNode = this.head
+    while (currentNode.next.next !== null) {
+      currentNode = currentNode.next
+    }
+    const poppedNode = currentNode.next
+    currentNode.next = null
+    return poppedNode.value
+  }
+
+  front() {
+    return this.head.value
+  }
+
+  back() {
+    if (this.empty()) return
+
+    let currentNode = this.head
+    while(currentNode.next !== null) {
+      currentNode = currentNode.next
+    }
+    return currentNode.value
+  }
+
   insert(index, value) {
-    const node = new Node(value)
+    if (index === 0 && this.empty()) {
+      this.head = new Node(value)
+      return
+    } 
+
+    if (index === 0 && !this.empty()) {
+      let prevHead = this.head
+      this.head = new Node(value)
+      this.head.next = prevHead
+      return
+    }
+
+    let currentNode = this.head
+    for (let i = 1; i < index; i++) {
+      currentNode = currentNode.next
+    }
+    let nodeToMove = currentNode.next
+    let node = new Node(value)
+    currentNode.next = node
+    node.next = nodeToMove
+  }
+
+  erase(index) {
+    if (index < 0) return
+    if (index === 0 && this.empty()) return
+
+    if (index === 0 && !this.empty()) {
+      this.head = this.head.next
+      return
+    }
+
+    let currentNode = this.head
+    for (let i = 0; i < index - 1; i++) {      
+      currentNode = currentNode.next
+    }
+    
+    currentNode.next = currentNode.next.next
   }
 
   toString() {
