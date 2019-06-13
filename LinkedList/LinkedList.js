@@ -119,6 +119,23 @@ class LinkedList {
     currentNode.next = currentNode.next.next
   }
 
+  remove_value(value) {
+    let currentNode = this.head
+
+    if (currentNode.value === value) {
+      this.head = currentNode.next
+      return
+    }
+
+    while (currentNode.next !== null) {
+      if (currentNode.next.value === value) {
+        currentNode.next = currentNode.next.next
+        return
+      }
+      currentNode = currentNode.next
+    }
+  }
+
   toString() {
     if (this.length === 0) return 'Empty LinkedList'
     let linkedListString = ''
