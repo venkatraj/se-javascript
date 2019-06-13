@@ -2,7 +2,7 @@ const path = require('path')
 
 module.exports = {
   mode: 'development',
-  entry: './LinkedList/index.js',
+  entry: './src/LinkedList/index.js',
   output: {
     path: path.join(__dirname, 'public'),
     filename: 'bundle.js'

@@ -19,11 +19,11 @@ class LinkedList {
     if (index < 0) return null;
 
     let currentNode = this.head
-    for (let i = 0; i <= this.length; i++) {
+    for (let i = 0; i < this.length; i++) {
       if (i === index) {
-        return currentNode
+        return currentNode.value
       }
-      currentNode = currentNode.next
+        currentNode = currentNode.next
     }
   }
 
@@ -51,6 +51,7 @@ class LinkedList {
       currentNode = currentNode.next
     }
     currentNode.next = new Node(value)
+    this.length++
   }
 
   pop_back() {
@@ -62,6 +63,7 @@ class LinkedList {
     }
     const poppedNode = currentNode.next
     currentNode.next = null
+    this.length--
     return poppedNode.value
   }
 
@@ -80,6 +82,7 @@ class LinkedList {
   }
 
   insert(index, value) {
+    this.length++
     if (index === 0 && this.empty()) {
       this.head = new Node(value)
       return
@@ -108,6 +111,7 @@ class LinkedList {
 
     if (index === 0 && !this.empty()) {
       this.head = this.head.next
+      this.length--
       return
     }
 
@@ -117,6 +121,7 @@ class LinkedList {
     }
     
     currentNode.next = currentNode.next.next
+    this.length--
   }
 
   remove_value(value) {
@@ -124,12 +129,14 @@ class LinkedList {
 
     if (currentNode.value === value) {
       this.head = currentNode.next
+      this.length--
       return
     }
 
     while (currentNode.next !== null) {
       if (currentNode.next.value === value) {
         currentNode.next = currentNode.next.next
+        this.length--
         return
       }
       currentNode = currentNode.next
