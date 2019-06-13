@@ -1,5 +1,6 @@
 import LinkedList from './LinkedList'
 import removeDuplicates from './removeDuplicates'
+import findKthToTheLast from './findKthToTheLast'
 
 const myLinkedList = new LinkedList()
 myLinkedList.push_front(50)
@@ -19,3 +20,8 @@ console.log(myLinkedList.toString())
 removeDuplicates(myLinkedList)
 console.log(myLinkedList.toString())
 
+// CTCI Problem 2.2
+console.log('Find 3rd element from the last, i.e. 40');
+let found = findKthToTheLast(myLinkedList, 3)
+console.log('Found', found)
+console.log(myLinkedList.toString())
