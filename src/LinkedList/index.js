@@ -1,6 +1,7 @@
 import LinkedList from './LinkedList'
 import removeDuplicates from './removeDuplicates'
 import findKthToTheLast, { findKthToTheLastWOUsingSize } from './findKthToTheLast'
+import deleteNode from './deleteNode'
 
 const myLinkedList = new LinkedList()
 myLinkedList.push_front(50)
@@ -31,4 +32,11 @@ console.log('Find 4th element from the last, i.e. 35');
 found = findKthToTheLastWOUsingSize(myLinkedList, 4)
 console.log('Found', found)
 
+// CTCI Problem 2.3
+console.log('Delete the Node, i.e. 35');
+let nodeToDelete = myLinkedList.head.next.next.next.next;
+deleteNode(myLinkedList, nodeToDelete)
+console.log(myLinkedList.toString())
 
+// 3 -> 5 -> 8 -> 5 -> 10 -> 2 -> 1 (partition 5)
+// 3 -> 1 -> 2 -> 10 -> 5 -> 5 -> 8
