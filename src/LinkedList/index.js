@@ -1,6 +1,6 @@
 import LinkedList from './LinkedList'
 import removeDuplicates from './removeDuplicates'
-import findKthToTheLast from './findKthToTheLast'
+import findKthToTheLast, { findKthToTheLastWOUsingSize } from './findKthToTheLast'
 
 const myLinkedList = new LinkedList()
 myLinkedList.push_front(50)
@@ -13,7 +13,7 @@ myLinkedList.push_back(60)
 myLinkedList.insert(4, 35)
 myLinkedList.push_back(35)
 myLinkedList.insert(5, 5)
-console.log(myLinkedList.toString())
+// console.log(myLinkedList.toString())
 
 
 // CTCI Problem: 2.1
@@ -24,4 +24,11 @@ console.log(myLinkedList.toString())
 console.log('Find 3rd element from the last, i.e. 40');
 let found = findKthToTheLast(myLinkedList, 3)
 console.log('Found', found)
-console.log(myLinkedList.toString())
+
+// CTCI Problem 2.2 
+// Without using linkedlist length
+console.log('Find 4th element from the last, i.e. 35');
+found = findKthToTheLastWOUsingSize(myLinkedList, 4)
+console.log('Found', found)
+
+

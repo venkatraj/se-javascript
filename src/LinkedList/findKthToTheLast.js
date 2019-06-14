@@ -4,4 +4,19 @@ const findKthToTheLast = (myLinkedList, k) => {
   return myLinkedList.value_at(indexOfNodeToRemove)
 }
 
-export default findKthToTheLast
+const findKthToTheLastWOUsingSize = (myLinkedList, k) => {
+  let pointerOne = myLinkedList.head
+  let pointerTwo = myLinkedList.head
+  let i = 0;
+  while (i < k) {
+    pointerOne = pointerOne.next
+    i++
+  }
+  while (pointerOne.next !== null) {
+    pointerOne = pointerOne.next
+    pointerTwo = pointerTwo.next
+  }
+  return pointerTwo.next.value
+}
+
+export { findKthToTheLast as default, findKthToTheLastWOUsingSize }
