@@ -44,6 +44,7 @@ class LinkedList {
   push_back(value) {
     if (this.empty()) {
       this.head = new Node(value)
+      this.length++
       return
     }
     let currentNode = this.head

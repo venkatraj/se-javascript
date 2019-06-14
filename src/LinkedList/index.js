@@ -40,3 +40,40 @@ console.log(myLinkedList.toString())
 
 // 3 -> 5 -> 8 -> 5 -> 10 -> 2 -> 1 (partition 5)
 // 3 -> 1 -> 2 -> 10 -> 5 -> 5 -> 8
+const listToPartition = new LinkedList()
+listToPartition.push_back(3)
+listToPartition.push_back(5)
+listToPartition.push_back(8)
+listToPartition.push_back(5)
+listToPartition.push_back(10)
+listToPartition.push_back(2)
+listToPartition.push_back(1)
+console.log(listToPartition.toString())
+
+function partition(listToPartition, x) {
+  let otherElements = new LinkedList()
+  let partitionElements = new LinkedList()
+  let currentNode = listToPartition.head
+  while (currentNode !== null) {
+    if (currentNode.value < x) {
+      otherElements.push_front(currentNode.value)
+    } else if (currentNode.value === x) {
+      partitionElements.push_front(currentNode.value)
+    } else {
+      otherElements.push_back(currentNode.value)
+    }
+    currentNode = currentNode.next
+  }
+
+  currentNode = partitionElements.head
+  while (currentNode !== null) {
+    otherElements.push_back(currentNode.value)
+    currentNode = currentNode.next
+  }
+
+  console.log(otherElements.toString())
+  listToPartition.head = otherElements.head
+}
+
+partition(listToPartition, 5)
+console.log(listToPartition.toString())
